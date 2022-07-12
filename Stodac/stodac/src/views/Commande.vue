@@ -180,7 +180,7 @@ export default {
     },
     saveAddress : function(){
       this.$store.dispatch('changeAddress', this.facture.adresse)
-      //axios.post('http://149.202.46.89:3000/api/user/MA/' + this.userInfos.userID,this.facture.adresse, {headers:instance.defaults.headers.common['Authorization']}); //faire le lien ça race
+      //axios.post('http://192.168.137.26:3000/api/user/MA/' + this.userInfos.userID,this.facture.adresse, {headers:instance.defaults.headers.common['Authorization']}); //faire le lien ça race
     },
     reco : function(){
       console.log('je suis la')

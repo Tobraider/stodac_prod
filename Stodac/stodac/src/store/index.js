@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 const axios = require('axios');
 
 const instance = axios.create({
-  baseURL : 'http://149.202.46.89:3000/api/'
+  baseURL : 'http://192.168.137.26:3000/api/'
 })
 
 let user = localStorage.getItem('user');
@@ -268,7 +268,7 @@ export default createStore({
     changeAddress : (state, address) =>{
       console.log(state, address)
       console.log(state.state.user)
-      //instance.post('http://149.202.46.89:3000/api/user/MA/' + state.user.userID,address)
+      //instance.post('http://192.168.137.26:3000/api/user/MA/' + state.user.userID,address)
       instance.post(`/user/MA/${state.state.user.userID}`,address)
       .then(function(){
         console.log('c passer')
