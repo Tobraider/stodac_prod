@@ -17,7 +17,7 @@ export default {
   mounted() {
     const script = document.createElement("script");
     // script.src = "https://www.paypal.com/sdk/js?client-id=ASOWp-_1zxWf4EXEzuc47swzhquPSB2XchEHOTMB8Ymv_KwnbQvBXRK9M6BFKqhSMTl90dMSp_qxVQxJ&currency=EUR";
-    script.src = "https://www.paypal.com/sdk/js?client-id=AbLPjKm4VxvJn-pTS_kWd0CFz1Gt0IxfB2FFM2Xfp-8xUT8p8hZ7lT264wZCigRhAQPesyampT4M94ni&currency=EUR";
+    script.src = "https://www.paypal.com/sdk/js?client-id=AWMngNzefwgOzED07lY7XXssE0syI6k3eEiNXBfQmKQm0WAUuoR3SElMWK0dFfHT1pjMTF4EIYraR4mM&currency=EUR";
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script)
   },

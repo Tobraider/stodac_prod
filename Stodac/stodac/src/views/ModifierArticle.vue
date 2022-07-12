@@ -128,15 +128,15 @@ export default {
       this.$router.push('/login/add');
     }
     this.$store.dispatch('getUserInfos');
-    axios.get('http://192.168.137.26:3000/api/stuff/manufacturer')
+    axios.get('http://149.202.46.89:3000/api/stuff/manufacturer')
         .then((response)=>{
           this.manufactureList = response.data;
         })
-    axios.get('http://192.168.137.26:3000/api/stuff/categories')
+    axios.get('http://149.202.46.89:3000/api/stuff/categories')
         .then((response)=>{
           this.categoryList = response.data;
         })
-    axios.get(`http://192.168.137.26:3000/api/stuff/product/${this.articleId}`)
+    axios.get(`http://149.202.46.89:3000/api/stuff/product/${this.articleId}`)
         .then((response)=>{
           let i = 0
           this.item.name =  response.data[0].name
@@ -178,7 +178,7 @@ export default {
       fd.append('compatibility', JSON.stringify(this.item.compatibility))
       console.log(fd)*/
 
-      axios.put(`http://192.168.137.26:3000/api/stuff/${this.articleId}`,{
+      axios.put(`http://149.202.46.89:3000/api/stuff/${this.articleId}`,{
         image: this.item.img,
         name: this.item.name,
         manufacturer: this.item.manufacturer,

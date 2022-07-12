@@ -127,11 +127,11 @@ export default {
       this.$router.push('/login/add');
     }
     this.$store.dispatch('getUserInfos');
-    axios.get('http://192.168.137.26:3000/api/stuff/manufacturer')
+    axios.get('http://149.202.46.89:3000/api/stuff/manufacturer')
         .then((response)=>{
           this.manufactureList = response.data;
         })
-    axios.get('http://192.168.137.26:3000/api/stuff/categories')
+    axios.get('http://149.202.46.89:3000/api/stuff/categories')
         .then((response)=>{
           this.categoryList = response.data;
         })
@@ -153,7 +153,7 @@ export default {
       fd.append('state', this.item.state)
       fd.append('description', this.item.description)
       fd.append('compatibility', JSON.stringify(this.item.compatibility))
-      axios.post('http://192.168.137.26:3000/api/stuff/',fd)
+      axios.post('http://149.202.46.89:3000/api/stuff/',fd)
           .then(()=>{
             console.log("TEST")
             this.isFileAded = true

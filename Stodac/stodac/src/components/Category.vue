@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://192.168.137.26:3000/api/stuff/categories').then((response)=>{this.category = response.data;})
+    axios.get('http://149.202.46.89:3000/api/stuff/categories').then((response)=>{this.category = response.data;})
   },
   directives:{
     clickOutside
