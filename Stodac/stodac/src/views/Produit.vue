@@ -84,7 +84,7 @@ export default {
   },
   mounted(){
     window.top.scrollY = 0;
-    axios.get(`http://149.202.46.89:3000/api/stuff/product/${this.articleId}`)
+    axios.get(`http://localhost:3000/api/stuff/product/${this.articleId}`)
       .then((response)=>{
         this.article =  response.data[0]
       })
