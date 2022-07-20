@@ -140,12 +140,12 @@ export default {
     },
     results : function(){
       if(this.word){
-        axios.get(`http://149.202.46.89:3000/api/stuff/name/${this.word}/4`)
+        axios.get(`http://localhost:3000/api/stuff/name/${this.word}/4`)
             .then((response)=>{
               this.resultArray =  response.data
              // console.log(this.resultArray)
             }).then(()=>{
-          axios.get(`http://149.202.46.89:3000/api/stuff/reference/${this.word}/4`)
+          axios.get(`http://localhost:3000/api/stuff/reference/${this.word}/4`)
               .then((response)=>{
                 response.data.forEach(el=>{
                   this.resultArray[this.resultArray.length]=el
