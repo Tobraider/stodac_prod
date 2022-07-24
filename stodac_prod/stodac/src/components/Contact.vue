@@ -65,7 +65,7 @@ export default {
     send: function (){
       if (this.captcha && this.msg != '' && this.email != '' && !this.alreadyClicked){
 
-        axios.post("http://localhost:3000/api/utils/mail", {
+        axios.post("http://149.202.46.89:3000/api/utils/mail", {
             mail: this.email,
             message: this.msg
         })
