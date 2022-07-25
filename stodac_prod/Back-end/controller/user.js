@@ -256,7 +256,7 @@ exports.loginByMail = (req, res, next) => {
                         userID: user._id,
                         token: jwt.sign(
                             {userID : user._id},
-                            'RANDOM_TOKEN_SECRET',
+                            process.env.JWT,
                             { expiresIn: '1h'}
                         )
                     });
