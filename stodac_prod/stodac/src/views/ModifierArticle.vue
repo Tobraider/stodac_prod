@@ -134,15 +134,15 @@ export default {
       this.$router.push('/login/add');
     }
     this.$store.dispatch('getUserInfos');
-    axios.get('http://149.202.46.89:3000/api/stuff/manufacturer')
+    axios.get('http://localhost:3000/api/stuff/manufacturer')
         .then((response)=>{
           this.manufactureList = response.data;
         })
-    axios.get('http://149.202.46.89:3000/api/stuff/categories')
+    axios.get('http://localhost:3000/api/stuff/categories')
         .then((response)=>{
           this.categoryList = response.data;
         })
-    axios.get(`http://149.202.46.89:3000/api/stuff/product/${this.articleId}`)
+    axios.get(`http://localhost:3000/api/stuff/product/${this.articleId}`)
         .then((response)=>{
           let i = 0
           this.item.name =  response.data[0].name
@@ -152,7 +152,7 @@ export default {
           })
           this.item.description =  response.data[0].description
           this.item.img =  response.data[0].img
-          console.log(response.data[0].img)
+          //console.log(response.data[0].img)
           this.item.manufacturer =  response.data[0].manufacturer
           this.item.poids =  response.data[0].poids
           this.item.price =  response.data[0].price / 1.20
@@ -175,7 +175,7 @@ export default {
     },
     yes: function(){
       this.validationPopup = false
-      axios.put(`http://149.202.46.89:3000/api/stuff/${this.articleId}`,{
+      axios.put(`https://stodac.fr/api/stuff/${this.articleId}`,{
         image: this.item.img,
         name: this.item.name,
         manufacturer: this.item.manufacturer,

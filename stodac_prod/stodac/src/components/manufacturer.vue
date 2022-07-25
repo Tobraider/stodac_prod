@@ -58,7 +58,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://149.202.46.89:3000/api/stuff/manufacturer')
+    axios.get('https://stodac.fr/api/stuff/manufacturer')
         .then((response)=>{
           this.manufacture = response.data;
         })

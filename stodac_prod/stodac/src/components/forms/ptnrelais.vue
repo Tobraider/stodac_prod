@@ -28,8 +28,8 @@ export default {
   },
   methods:{
     callColissimo: function(){
-      axios.get('http://149.202.46.89:3000/api/utils/token').then((response) => {
-        console.log(response.data.token)
+      axios.get('https://stodac.fr/api/utils/token').then((response) => {
+        //console.log(response.data.token)
         $('#widget-container').frameColissimoOpen({
           "ceLang" : "fr",
           "URLColissimo": " https://ws.colissimo.fr",

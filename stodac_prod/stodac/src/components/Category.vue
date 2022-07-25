@@ -48,7 +48,7 @@ export default {
     },
     getByCategory: function(category){
       if(category !== 'Catégories'){
-        console.log('catégory selected', category)
+        //console.log('catégory selected', category)
         this.$store.dispatch('getStufsCategory', category)
             .then(this.noItems = 1)
             .catch(this.noItems = 0)
@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('http://149.202.46.89:3000/api/stuff/categories').then((response)=>{this.category = response.data;})
+    axios.get('https://stodac.fr/api/stuff/categories').then((response)=>{this.category = response.data;})
   },
   directives:{
     clickOutside

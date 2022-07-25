@@ -35,7 +35,7 @@ app.use((req, res, next)=>{
 })
 app.use(cors())
 app.use(bodyParser.json());
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/api/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/facture', factureRoutes);

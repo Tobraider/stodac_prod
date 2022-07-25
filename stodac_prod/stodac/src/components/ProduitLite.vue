@@ -1,7 +1,8 @@
 <template>
   <div id="produit">
     <div class="contain-img">
-      <img :src="produit.img" :alt="produit.name" srcset="">
+      <img :src="produit.img" :alt="produit.name" id="img" srcset="">
+      <div v-if="!isPictureLoaded" id="imgLoader"></div>
       <span id="description">{{produit.description}}</span>
     </div>
     <div class="product-info">
@@ -26,14 +27,27 @@
 
 export default {
   name: 'produit',
+  data : ()=>{
+    return{
+      isPictureLoaded: false
+    }
+  },
   props : {
     produit: Object
   },
+  mounted() {
+    const img = document.getElementById("img")
+    img.style.display = "none"
+    img.addEventListener("load",()=>{
+      this.isPictureLoaded = true;
+      img.style.display = "block"
+    })
+  }
 
 }
 </script>
 <style scoped>
-@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
 .product-info{
   padding: 5px;
   margin-bottom: 20px;
@@ -50,7 +64,7 @@ export default {
   display: flex;
   justify-content: space-between;
   color: #007057;
-  width: 260px;
+  width: 300px;
   font-weight : bold;
   padding-right: 17px;
 }
@@ -67,16 +81,39 @@ p{
   overflow:hidden;
   margin-bottom: 20px;
 }
-img{
+#imgLoader::before{
+  position: absolute;
+  top: 0;
+  left:0;
+  content: " ";
   width: 100%;
+  height: 250px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+#imgLoader{
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background-color: #4c4c4c;
+  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
+  -o-animation: skeleton 0.8s ease-in-out infinite alternate;
+  animation: skeleton 0.8s ease-in-out infinite alternate;
+}
+img{
+  z-index: 0;
+  width: 300px;
   height: 250px;
   object-fit: cover;
   display: inline;
   transition: .5s ease ;
 }
 #produit{
-  width: 260px;
-  height: 400px;
+  width: 300px;
+  height: 415px;
 }
 #description{
   display: block;
@@ -110,5 +147,10 @@ img{
   position: relative;
   bottom: 7px;
   font-size: .7em;
+}
+@keyframes skeleton {
+  to  {
+    opacity: 0.6;
+  }
 }
 </style>
