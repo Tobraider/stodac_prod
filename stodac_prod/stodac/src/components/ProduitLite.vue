@@ -81,6 +81,7 @@ p{
   overflow:hidden;
   margin-bottom: 20px;
 }
+<<<<<<< HEAD
 #imgLoader::before{
   position: absolute;
   top: 0;
@@ -96,6 +97,20 @@ p{
   z-index: 2;
   top: 0;
   left: 0;
+=======
+#imgLoader{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background-color: #4c4c4c;
+  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
+  -o-animation: skeleton 0.8s ease-in-out infinite alternate;
+  animation: skeleton 0.8s ease-in-out infinite alternate;
+}
+img{
+>>>>>>> ff7aa7dd4fbc8f38566bc28ccb5e4586806a4aa8
   width: 100%;
   height: 250px;
   background-color: #4c4c4c;
