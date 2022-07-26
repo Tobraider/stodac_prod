@@ -286,11 +286,7 @@ export default createStore({
     changeAddress : (state, address) =>{
       //console.log(state, address)
       //console.log(state.state.user)
-<<<<<<< HEAD
       //instance.post('http://localhost:3000/api/user/MA/' + state.user.userID,address)
-=======
-      //instance.post('http://149.202.46.89:3000/api/user/MA/' + state.user.userID,address)
->>>>>>> ff7aa7dd4fbc8f38566bc28ccb5e4586806a4aa8
       instance.post(`/user/MA/${state.state.user.userID}`,address)
       .then(function(){
         //console.log('c passer')

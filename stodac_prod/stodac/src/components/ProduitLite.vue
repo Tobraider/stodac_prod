@@ -1,7 +1,7 @@
 <template>
   <div id="produit">
     <div class="contain-img">
-      <img :src="produit.img" :alt="produit.name" id="img" srcset="">
+      <img :src="produit.img" :alt="produit.name" id="img" class="testtest" srcset="">
       <div v-if="!isPictureLoaded" id="imgLoader"></div>
       <span id="description">{{produit.description}}</span>
     </div>
@@ -29,19 +29,22 @@ export default {
   name: 'produit',
   data : ()=>{
     return{
-      isPictureLoaded: false
+      isPictureLoaded: false,
     }
   },
   props : {
-    produit: Object
+    produit: Object,
+    id : Number
   },
   mounted() {
-    const img = document.getElementById("img")
-    img.style.display = "none"
-    img.addEventListener("load",()=>{
+    const img = document.getElementsByClassName("testtest")
+    img[this.id].style.display = "none"
+    img[this.id].addEventListener("load",()=>{
       this.isPictureLoaded = true;
-      img.style.display = "block"
+      img[this.id].style.display = "block"
     })
+    document.getElementById("imgLoader").style.animationDelay = this.id + 1 + 's'
+    document.getElementById("imgLoader").style.webkitAnimationDelay = this.id + 1  + 's'
   }
 
 }
@@ -81,42 +84,24 @@ p{
   overflow:hidden;
   margin-bottom: 20px;
 }
-<<<<<<< HEAD
 #imgLoader::before{
-  position: absolute;
-  top: 0;
-  left:0;
   content: " ";
   width: 100%;
   height: 250px;
   background-color: #ffffff;
-  z-index: 1;
 }
 #imgLoader{
   position: absolute;
   z-index: 2;
   top: 0;
   left: 0;
-=======
-#imgLoader{
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 250px;
-  background-color: #4c4c4c;
-  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
-  -o-animation: skeleton 0.8s ease-in-out infinite alternate;
-  animation: skeleton 0.8s ease-in-out infinite alternate;
-}
-img{
->>>>>>> ff7aa7dd4fbc8f38566bc28ccb5e4586806a4aa8
-  width: 100%;
-  height: 250px;
-  background-color: #4c4c4c;
-  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
-  -o-animation: skeleton 0.8s ease-in-out infinite alternate;
-  animation: skeleton 0.8s ease-in-out infinite alternate;
+  background-size: 100% 104px;
+  animation: wave 3s infinite linear forwards;
+  -webkit-animation:wave 3s infinite linear forwards;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
 }
 img{
   z-index: 0;
@@ -163,9 +148,21 @@ img{
   bottom: 7px;
   font-size: .7em;
 }
-@keyframes skeleton {
-  to  {
-    opacity: 0.6;
+@keyframes wave{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+
+@-webkit-keyframes wave{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
   }
 }
 </style>
