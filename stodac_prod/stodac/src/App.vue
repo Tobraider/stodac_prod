@@ -291,7 +291,7 @@ footer .img{
   background-color: #FFFFFF;
 }
 #payements{
-  width: 40%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
