@@ -60,6 +60,7 @@ export default {
             .catch(this.noItems = 0)
       }else{
         this.$store.dispatch('getStufs', 1)
+        this.$store.dispatch('getStuffNb')
       }
     },
     close: function(){

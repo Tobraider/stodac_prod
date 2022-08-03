@@ -95,7 +95,7 @@ const routes = [
     component: () => import('../views/resetpassword.vue')
   },
   {
-    path:"/resetpasswordform/:email/:id(.*)",
+    path:"/resetpasswordform/:token(.*)",
     name  : "resetpasswordform",
     component: () => import('../views/resetpasswordform.vue')
   },

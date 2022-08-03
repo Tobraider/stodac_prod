@@ -5,7 +5,7 @@
     </button>
     <div id="test" v-if="clicked">
       <ul>
-        <li  v-if="nameCategory!=='Catégories'" @click="isSelected(-1)"> supprimer les filtres</li>
+        <li  v-if="nameMarque!=='Marques'" @click="isSelected(-1)"> Supprimer les filtres</li>
         <li v-for="(man, index) in manufacture" @click="isSelected(index)" :key="index" :class="{'selected' : selection[index]}">{{man}}</li>
       </ul>
     </div>
@@ -38,12 +38,14 @@ export default {
         this.selection[i] = false
       }
       if (index === -1){
-        this.getByCategory('Marques');
-        this.nameCategory = 'Marques'
+        this.getByManufacture('Marques');
+        this.nameMarque = 'Marques'
+      }else{
+        this.selection[index] = true;
+        this.getByManufacture(this.manufacture[index]);
+        this.nameMarque = this.manufacture[index]
+
       }
-      this.selection[index] = true;
-      this.getByManufacture(this.manufacture[index]);
-      this.nameMarque = this.manufacture[index]
       this.clicked = false;
     },
     close: function(){
@@ -60,6 +62,7 @@ export default {
             .catch(this.noItems = 0)
       }else{
         this.$store.dispatch('getStufs', 1)
+        this.$store.dispatch('getStuffNb')
       }
     }
   },

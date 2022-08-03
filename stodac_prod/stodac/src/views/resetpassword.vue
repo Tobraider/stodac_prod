@@ -25,7 +25,6 @@ export default {
   methods:{
     send : function (){
       if(this.mailValidation){
-        console.log("test")
         axios.post(`https://stodac.fr/api/utils/requestResetPswd`,{
           email: this.mail
         }).then(response => {

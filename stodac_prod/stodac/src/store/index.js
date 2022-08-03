@@ -100,7 +100,7 @@ export default createStore({
       state.userInfos = userInfos;
     },
     stuffs: function(state, stuffs){
-      state.stuffs = stuffs
+      state.stuffs = stuffs;
     },
     stuffsBy: function(state, params){
       if (params.isManufacture){

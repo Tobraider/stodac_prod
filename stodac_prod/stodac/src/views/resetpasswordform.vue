@@ -27,8 +27,7 @@ export default {
     send : function (){
       if(this.passwordValidation && (this.pswd === this.pswd2)){
         axios.post(`https://stodac.fr/api/utils/ResetPswd`,{
-          email: this.$route.params.email,
-          id : this.$route.params.id,
+          token: this.$route.params.token,
           password: this.pswd
         }).then(response => {
           if (response.status == 200){

@@ -3,6 +3,7 @@ const axios = require("axios")
 const nodemailer = require("nodemailer")
 const User = require('../models/User')
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 
 exports.getColissimoToken = (req, res) => {
@@ -48,6 +49,7 @@ exports.contactEmail = (req, res) => {
 }
 
 exports.changePasswordReques = (req,res)=>{
+
     async function changePswMail(adress,link) {
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
@@ -196,42 +198,32 @@ exports.changePasswordReques = (req,res)=>{
         });
 
         console.log("Message sent: %s", info.messageId);
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-        // Preview only available when sending through an Ethereal account
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-        // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     }
     if (req.body.email){
         User.find({email: req.body.email},(err,docs)=>{
             if(err) return res.status(500).json({message: "introuvable"})
             if(docs.length == 0) return res.status(500).json({message: "introuvable"})
-            bcrypt.hash(toString(docs[0]._id), 10)
-                .then( hash => {
-                    changePswMail(docs[0].email, `https://stodac.fr/resetpasswordform/${docs[0].email}/${hash}`)
-                }).catch(()=>{ return res.status(500).json({message: "introuvable"})
-            })
+            const token = jwt.sign(
+                {userID : docs[0]._id},
+                process.env.JWT,
+                { expiresIn: '1h'}
+            )
+            console.log(token)
+            changePswMail(docs[0].email, `https://stodac.fr/resetpasswordform/${token}`)
             return res.status(201).json({ message : 'email envoyé'})
         })
     }
 }
 
 exports.changePassword = (req, res)=>{
-    User.find({email: req.body.email},(err,docs)=> {
-        bcrypt.compare(toString(docs[0]._id), req.body.id).then(valid =>{
-            if(!valid) {
-                return res.status(500)
-            }
-            bcrypt.hash(req.body.password, 10).then(hash =>{
+    const token = req.body.token;
+    const decodedToken = jwt.verify(token, process.env.JWT);
+    const userId = decodedToken.userID
 
-                User.updateOne({_id :docs[0]._id}, {$set:{password:hash}}, (err, docs)=>{
-                    if(err) res.status(401).json({ error : "Impossible changer le mot de passe" });
-                    return res.status(200).json({status:"OK"});
-                })
-
-            }).catch(()=>{
-                return res.status(400).json({error : "impossible de hacher le mot de passe"})
-            })
+    bcrypt.hash(req.body.password, 10).then(hash => {
+        User.updateOne({_id: userId}, {$set: {password: hash}}, (err, docs) => {
+            if (err) res.status(401).json({error: "Impossible changer le mot de passe"});
+            return res.status(200).json({status: "OK"});
         })
     })
 }
