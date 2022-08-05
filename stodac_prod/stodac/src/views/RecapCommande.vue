@@ -146,11 +146,9 @@ export default {
 
 
       if(this.modeDeLivraison != "surPlace"){
-
         this.$store.state.pannier.forEach((article) => {
           poidsFraisDePort += article.qty * article.article.poids
         })
-
         if (poidsFraisDePort < 100 ) prixFraisDePort = 8
         if (poidsFraisDePort >= 100 && poidsFraisDePort < 500) prixFraisDePort = 10
         if (poidsFraisDePort >= 500 && poidsFraisDePort < 1000) prixFraisDePort = 12
@@ -160,15 +158,9 @@ export default {
         if (poidsFraisDePort >= 2500 && poidsFraisDePort < 3000) prixFraisDePort = 20
         if (poidsFraisDePort >= 3000 && poidsFraisDePort < 3500) prixFraisDePort = 22
         if (poidsFraisDePort >= 3500 ) prixFraisDePort = 24
-
         this.saveFDP(Math.round(prixFraisDePort * 1.2 * 100)/100)
-
         return Math.round(prixFraisDePort * 1.2 * 100)/100
-
-
-
       }else{
-
         return 0
       }
     },

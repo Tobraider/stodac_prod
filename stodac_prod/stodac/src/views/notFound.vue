@@ -50,7 +50,7 @@
         </div>
       </div>
       <div id="images_container" :style="{transform: `translate(${translate}%)`}">
-        <img src="../assets/PHOTO-2022-02-26-14-23-17.jpg" alt="Illustration random">
+        <img src="../assets/PHOTO-2022-02-26-14-33-01.jpg" alt="Illustration random">
         <img src="../assets/PHOTO-2022-02-26-14-33-01.jpg" alt="Illustration random">
         <img src="../assets/PHOTO-2022-02-26-14-24-53.jpg" alt="Illustration random">
         <img src="../assets/PHOTO-2022-02-26-14-31-00.jpg" alt="Illustration random">

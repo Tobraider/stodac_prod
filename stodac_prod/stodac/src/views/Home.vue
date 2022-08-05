@@ -50,7 +50,7 @@ export default {
   data: function(){
     return{
       noItems: 0,
-      recherche: false,
+       recherche: false,
       areDataLoading:true
     }
   },

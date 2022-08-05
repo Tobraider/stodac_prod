@@ -82,12 +82,26 @@ export default {
   },
   computed : {
     countTTL: function() {
+      var zeroDec = /^.*^.\d{0}$/;
+      var oneDec = /^.*\.\d{1}$/;
+
       let buffer = 0;
       this.$store.state.pannier.forEach(e => {
         buffer += e.article.price * e.qty
       })
-      return Math.round(buffer * 100) / 100
-    }
+
+      const nb =  Math.round(buffer * 100) / 100
+
+      if(zeroDec.test(nb)){
+        return nb + '.00'
+      }else{
+        if(oneDec.test(nb)){
+          return nb + '0'
+        }
+      }
+      return nb
+
+    },
   }
 }
 </script>

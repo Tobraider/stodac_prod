@@ -17,7 +17,7 @@
         <p v-if="produit.qty<=0" class="disponibility" style="color: #F18F01; font-weight: normal ;">Disponible sur commande (délais 7 - 10 jours)</p>
 
         </div>
-        <p>{{produit.price}}€ <span id="ttc">TTC</span></p>
+        <p>{{price}}€ <span id="ttc">TTC</span></p>
       </div>
       </div>
     </div>
@@ -45,6 +45,22 @@ export default {
     })
     document.getElementById("imgLoader").style.animationDelay = this.id + 1 + 's'
     document.getElementById("imgLoader").style.webkitAnimationDelay = this.id + 1  + 's'
+  },
+  computed: {
+    price: function(){
+      var zeroDec = /^.*^.\d{0}$/;
+      var oneDec = /^.*\.\d{1}$/;
+      const nb = this.produit.price.toString()
+      if(zeroDec.test(nb)){
+        return nb + '.00'
+      }else{
+        if(oneDec.test(nb)){
+          return nb + '0'
+        }
+      }
+      return this.produit.price
+
+    }
   }
 
 }

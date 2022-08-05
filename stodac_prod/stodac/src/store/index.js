@@ -101,6 +101,7 @@ export default createStore({
     },
     stuffs: function(state, stuffs){
       state.stuffs = stuffs;
+      console.log(stuffs.length)
     },
     stuffsBy: function(state, params){
       if (params.isManufacture){

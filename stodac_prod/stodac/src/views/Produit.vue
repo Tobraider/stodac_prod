@@ -6,7 +6,7 @@
       <div class="PriceAndInfos">
         <p class="title">Description</p>
         <p>{{article.description}}</p>
-        <p><span class="title">Prix : </span>{{article.price}}€</p>
+        <p><span class="title">Prix : </span>{{price}}€</p>
         <div class="container">
           <input type="number" v-model="qty" id="qty" min="1" :max="article.qty"/>
           <div class="more_less">
@@ -91,6 +91,24 @@ export default {
       .catch((error)=>{
         console.log(error)
       })
+  },
+  computed: {
+    price: function(){
+      var zeroDec = /^.*^.\d{0}$/;
+      var oneDec = /^.*\.\d{1}$/;
+      let nb = 0
+      if (this.article.price){
+        nb = this.article.price.toString()
+      }
+      if(zeroDec.test(nb)){
+        return nb + '.00'
+      }else{
+        if(oneDec.test(nb)){
+          return nb + '0'
+        }
+      }
+      return nb
+    }
   }
 }
 </script>

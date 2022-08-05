@@ -48,7 +48,7 @@ export default {
     clicked : function(el){
       this.$router.push("/").then(()=>{
         setTimeout(()=>{
-          this.$store.dispatch('getStufsCategory', el)
+          this.$store.dispatch('getStufsCategory', {category : el, manufacturer: ''})
         },100)
 
       })
